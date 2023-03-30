@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exam</title>
+
+  <style>
+    *{
+      text-align: center;
+      font-size: large;
+    }
+    #tab{
+    
+       border:2px solid black;
+      background-color: rgb(201, 119, 13);
+    }
+  </style>
+</head>
+<body>
+  <button id="myarg1" ondblclick="changeLabel()">MyArg</button>
+  <select id="dropdownValue" onchange="updateResult()">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select>
+  <button id="addarg" onclick="addArgument()">+</button>
+  <div id="arguments"></div>
+<br><br><br><br><br>
+
+  <select id="myarg" onchange="updateResult()">
+    <option value="undefined" selected>Select</option>
+    <option value="constant">Constant</option>
+    <option value="argument">Argument</option>
+    <option value="or">Or</option>
+    <option value="and">And</option>
+  </select>
+
+  <button id="dropdownButton" onclick="showDropdown()">Select</button>
+  <div id="dropdown" style="display: none">
+    <select id="dropdownValue" onchange="updateResult()">
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </select>
+  </div>
+  <button id="cancel" onclick="cancel()">x</button>
+  <div id="result">result: undefined</div>
+
+  <br><br><br><br><br><br><br><br><br><br>
+  <table id="tab">
+ 
+  <th>I have done assignment, but i tried with some logic and still their is much to do</th><th>|||||</th>
+  <th>if you say like continue, i can continue after your clarification</th><th>|||||</th>
+  <th>recently i have seen intershala like you have sent assignment, so that time i got to know, so i have less time to complete</th><th>|||||</th>
+  <th>so if you re willing to contact me , you can go through my profile and contact me</th>
+
+  </table>
+  <footer style="color:gold;font-size:80px;">
+    <h1>interview question </h1>
+    <p>email:umaveena.alvas@gmail.com</p>
+    <p>9148041589</p>Uma Ajay Kumar
+  <a href="https://umaajay.netlify.app/">My Website</a>
+</footer>
+</body>
+<script>
+
+  function changeLabel() {
+    var label = prompt("Enter new label for MyArg button:");
+    if (label != null) {
+      document.getElementById("myarg1").innerHTML = label;
+    }
+  }
+  
+  function addArgument() {
+    var newArgument = document.createElement("button");
+    newArgument.innerHTML = document.getElementById("myarg1").innerHTML;
+    newArgument.ondblclick = changeLabel;
+    document.getElementById("arguments").appendChild(newArgument);
+  }
+
+  
+
+  
+    function updateResult() {
+      const arg = document.getElementById("myarg").value;
+      const resultDiv = document.getElementById("result");
+      const dropdownValue = document.getElementById("dropdownValue").value;
+      if (arg === "undefined") {
+        resultDiv.innerText = "result: undefined";
+      } else if (arg === "constant" || arg === "argument"  || arg==="or" || arg==="and") {
+        resultDiv.innerText = "result: " + dropdownValue;
+      }
+    }
+
+    function showDropdown() {
+      const dropdownButton = document.getElementById("dropdownButton");
+      const dropdown = document.getElementById("dropdown");
+      dropdown.style.display = "block";
+      dropdownButton.style.display = "none";
+    }
+
+    function cancel() {
+      const dropdownButton = document.getElementById("dropdownButton");
+      const dropdown = document.getElementById("dropdown");
+      const resultDiv = document.getElementById("result");
+      document.getElementById("myarg").value = "undefined";
+      dropdownButton.style.display = "inline-block";
+      dropdown.style.display = "none";
+      resultDiv.innerText = "result: undefined";
+    }
+  </script>
+</html>
